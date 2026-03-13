@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Forest green primary */
+    --primary: 0.44 0.14 147;
+    --primary-foreground: 0.98 0.01 100;
+
+    /* Warm amber accent */
+    --accent: 0.72 0.14 75;
+    --accent-foreground: 0.18 0.06 60;
+
+    /* Warm cream background */
+    --background: 0.97 0.01 95;
+    --foreground: 0.2 0.05 145;
+
+    /* Cards */
+    --card: 0.99 0.005 90;
+    --card-foreground: 0.2 0.05 145;
+
+    /* Popover */
+    --popover: 0.99 0.005 90;
+    --popover-foreground: 0.2 0.05 145;
+
+    /* Secondary: soft sage */
+    --secondary: 0.92 0.04 145;
+    --secondary-foreground: 0.3 0.08 145;
+
+    /* Muted */
+    --muted: 0.93 0.02 100;
+    --muted-foreground: 0.55 0.04 145;
+
+    /* Destructive: warm red */
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.98 0.01 100;
+
+    /* Borders */
+    --border: 0.88 0.03 140;
+    --input: 0.88 0.03 140;
+    --ring: 0.44 0.14 147;
+
+    --radius: 0.75rem;
+
+    /* Charts */
+    --chart-1: 0.44 0.14 147;
+    --chart-2: 0.72 0.14 75;
+    --chart-3: 0.65 0.12 200;
+    --chart-4: 0.6 0.15 30;
+    --chart-5: 0.7 0.1 300;
+
+    /* Sidebar */
+    --sidebar: 0.95 0.02 145;
+    --sidebar-foreground: 0.2 0.05 145;
+    --sidebar-primary: 0.44 0.14 147;
+    --sidebar-primary-foreground: 0.98 0.01 100;
+    --sidebar-accent: 0.88 0.05 145;
+    --sidebar-accent-foreground: 0.3 0.08 145;
+    --sidebar-border: 0.85 0.03 145;
+    --sidebar-ring: 0.44 0.14 147;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .status-pending {
+    @apply bg-amber-100 text-amber-800 border border-amber-200;
+  }
+  .status-accepted {
+    @apply bg-blue-100 text-blue-800 border border-blue-200;
+  }
+  .status-picked-up {
+    @apply bg-green-100 text-green-800 border border-green-200;
+  }
+}
